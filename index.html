@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Nazmi | Young Coder SMP</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00b4db, #0083b0);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header dengan foto profil */
+        .profile-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .profile-picture i {
+            font-size: 80px;
+            color: #667eea;
+        }
+
+        .profile-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .profile-header .badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 1.1em;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .badge i {
+            margin-right: 8px;
+        }
+
+        /* Content */
+        .content {
+            padding: 40px;
+        }
+
+        /* Bio Section */
+        .bio {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .bio h2 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .bio h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .bio p {
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        .bio .quote {
+            font-style: italic;
+            color: #555;
+            margin-top: 20px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa, #e9ecf2);
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .info-card {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .info-card i {
+            font-size: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .info-card h3 {
+            color: #333;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .info-card .age-highlight {
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Skills Section */
+        .skills {
+            margin: 40px 0;
+        }
+
+        .skills h3 {
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-tag i {
+            font-size: 1.1em;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Achievement Section */
+        .achievements {
+            margin: 40px 0;
+        }
+
+        .achievements h3 {
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .achievement-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .achievement-item {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .achievement-item:hover {
+            background: linear-gradient(135deg, #f5f7fa, #e9ecf2);
+        }
+
+        .achievement-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5em;
+        }
+
+        .achievement-text {
+            flex: 1;
+        }
+
+        .achievement-text h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        .achievement-text p {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa, #e9ecf2);
+            border-radius: 20px;
+        }
+
+        .contact h3 {
+            color: #333;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: all 0.3s;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-btn i {
+            font-size: 1.2em;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-size: 0.9em;
+        }
+
+        .footer i {
+            color: #ff6b6b;
+            margin: 0 3px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bio p {
+                font-size: 1em;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-picture {
+                width: 120px;
+                height: 120px;
+            }
+
+            .profile-picture i {
+                font-size: 60px;
+            }
+
+            .skill-tag {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header dengan foto profil -->
+        <div class="profile-header">
+            <div class="profile-picture">
+                <i class="fas fa-user-graduate"></i>
+            </div>
+            <h1>Muhammad Nazmi</h1>
+            <div class="badge">
+                <i class="fas fa-code"></i> Young Coder | 9 Tahun
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Bio Section -->
+            <div class="bio">
+                <h2>Halo, saya Nazmi! 👋</h2>
+                <p>Saya adalah siswa kelas 4 Sd yang memiliki passion besar di dunia coding. Di usia 9 tahun, saya sudah bisa membuat berbagai website dan program. Saya percaya bahwa usia bukanlah batasan untuk berkarya di dunia teknologi.</p>
+                <div class="quote">
+                    <i class="fas fa-quote-left" style="color: #667eea; margin-right: 10px;"></i>
+                    Coding adalah cara saya mengekspresikan kreativitas dan membangun masa depan. Tidak ada kata terlalu muda untuk mulai belajar!
+                </div>
+            </div>
+
+            <!-- Info Cards -->
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Pendidikan</h3>
+                    <p>Siswa Kelas 4 SD</p>
+                    <p class="age-highlight">Semangat Belajar! 📚</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-birthday-cake"></i>
+                    <h3>Usia</h3>
+                    <p><span class="age-highlight">9 Tahun</span></p>
+                    <p>Muda, kreatif, dan penuh ide!</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Pengalaman Coding</h3>.
+                    <p>Sudah bisa membuat website, memahami HTML, CSS, dan JavaScript dasar</p>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="skills">
+                <h3><i class="fas fa-star" style="color: #ffd700;"></i> Skill Coding Saya</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span>
+                    <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                    <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+                    <span class="skill-tag"><i class="fas fa-mobile-alt"></i> Responsive Design</span>
+                    <span class="skill-tag"><i class="fas fa-paint-brush"></i> Creative Thinking</span>
+                    <span class="skill-tag"><i class="fas fa-lightbulb"></i> Problem Solving</span>
+                </div>
+            </div>
+
+            <!-- Achievement Section -->
+            <div class="achievements">
+                <h3><i class="fas fa-trophy" style="color: #ffd700;"></i> Pencapaian & Aktivitas</h3>
+                <div class="achievement-list">
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="achievement-text">
+                            <h4>Membuat Website Pertama</h4>
+                            <p>Berhasil membuat website profil sendiri di usia 9 tahun</p>
+                        </div>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="achievement-text">
+                            <h4>Siswa Aktif Kelas 4 SD</h4>
+                            <p>Menyeimbangkan pelajaran sekolah dengan belajar coding</p>
+                        </div>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="achievement-text">
+                            <h4>Inspirasi Teman-teman</h4>
+                            <p>Menginspirasi teman seusia untuk mulai belajar coding</p>
+                        </div>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="achievement-text">
+                            <h4>Semangat Belajar Tinggi</h4>
+                            <p>Selalu belajar hal baru tentang teknologi setiap hari</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="contact">
+                <h3><i class="fas fa-paper-plane"></i> Yuk Kenalan!</h3>
+                <p style="margin-bottom: 25px; color: #666;">Mari berteman dan berbagi ilmu tentang coding!</p>
+                <div class="contact-links">
+                    <a href="#" class="contact-btn">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="#" class="contact-btn">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="#" class="contact-btn">
+                        <i class="fab fa-tiktok"></i> TikTok
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Dibuat dengan <i class="fas fa-heart"></i> oleh <strong>Muhammad Nazmi</strong> | Siswa Kelas 1 SMP | 14 Tahun</p>
+            <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.9;">
+                <i class="fas fa-code"></i> "Usia 9 tahun, semangat 24 jam!"
+            </p>
+        </div>
+    </div>
+</body>
+</html>
